@@ -1,7 +1,8 @@
 const { test, expect } = require('@jest/globals');
+const data = {name:'Rye',id:1,email:'sample@gmail.com'}
 const Employee = require('../lib/Employee');
 // creates an initial Employee object to test with
-const emp = new Employee('Rye',1,'sample@gmail.com');
+const emp = new Employee(data);
 // test that the properties of the employee object are being created properly
 test('creates an employee object',() => {
     expect(emp.name).toBe('Rye');
