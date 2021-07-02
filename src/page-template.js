@@ -30,12 +30,12 @@ const genEngineerCards = function (engArr) {
         <ul class="list-group list-group-flush border border-dark">
             <li class="list-group-item">ID: ${engObject.getId()}</li>
             <li class="list-group-item">Email: <a href = "mailto:${engObject.getEmail()}">${engObject.getEmail()}</a></li>
-            <li class="list-group-item">GitHub: <a href = "https://github.com/${engObject.getGitHub()}">${engObject.getGitHub()}</li>
+            <li class="list-group-item">GitHub: <a href = "https://github.com/${engObject.getGitHub()}">${engObject.getGitHub()}</a></li>
         </ul>
     </div>
     `;
     })
-    .join('')}`;
+        .join('')}`;
 };
 
 const genInternCards = function (intArr) {
@@ -45,7 +45,7 @@ const genInternCards = function (intArr) {
     <div class="card" style="width: 18rem;">
         <div class="card-header border border-dark">
             <h3 class = "name">${intObject.getName()}</h3>
-            <h4 class = "role"><span class="oi oi-bug"></span> ${intObject.getRole()}</h4>
+            <h4 class = "role"><span class="oi oi-star"></span> ${intObject.getRole()}</h4>
         </div>
         <ul class="list-group list-group-flush border border-dark">
             <li class="list-group-item">ID: ${intObject.getId()}</li>
@@ -55,13 +55,13 @@ const genInternCards = function (intArr) {
     </div>
     `;
     })
-    .join('')}`;
+        .join('')}`;
 };
 
 const pageHTML = function (objects) {
     // destructure objects data by role
-    const {engineers, interns, ...manager} = objects;
-    
+    const { engineers, interns, ...manager } = objects;
+
 
     return `
     <!DOCTYPE html>
@@ -84,10 +84,10 @@ const pageHTML = function (objects) {
         </header>
 
         <main>
-            <div class="d-flex flex-row bd-highlight mb-3 justify-content-center">
-            ${genManagerCard(new Manager(manager))}
-            ${genEngineerCards(engineers)}
-            ${genInternCards(interns)}
+            <div class="d-flex flex-row flex-wrap bd-highlight mb-3 justify-content-center">
+                <div class="p-2 bd-highlight">${genManagerCard(new Manager(manager))}</div>
+                <div class="p-2 bd-highlight">${genEngineerCards(engineers)}</div>
+                <div class="p-2 bd-highlight">${genInternCards(interns)}</div>
             </div>
         </main>
 

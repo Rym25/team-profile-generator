@@ -231,8 +231,7 @@ const promptIntern = teamsData => {
 promptManager()
 .then(promptEngineer)
 .then(promptIntern)
-.then(teamsData => console.log(teamsData));
-// .then(obj => {
-//     return pageHTML(obj);
-// })
-// .then(html => writeFile(html));
+.then(obj => {
+    return pageHTML(obj);
+})
+.then(html => writeFile(html));
