@@ -1,3 +1,7 @@
+const Engineer = require("../lib/Engineer");
+const Manager = require("../lib/Manager");
+const Intern = require("../lib/Intern");
+
 const genManagerCard = function (manObject) {
     return `
     <div class="card" style="width: 18rem;">
@@ -14,17 +18,50 @@ const genManagerCard = function (manObject) {
     `
 }
 
-// const genEngineerCards = function (engObject) {
-//     // code to create eng cards here
-// }
+const genEngineerCards = function (engArr) {
+    const engObjects = engArr.map(data => new Engineer(data));
+    return `${engObjects.map(engObject => {
+        return `
+    <div class="card" style="width: 18rem;">
+        <div class="card-header border border-dark">
+            <h3 class = "name">${engObject.getName()}</h3>
+            <h4 class = "role"><span class="oi oi-bug"></span> ${engObject.getRole()}</h4>
+        </div>
+        <ul class="list-group list-group-flush border border-dark">
+            <li class="list-group-item">ID: ${engObject.getId()}</li>
+            <li class="list-group-item">Email: <a href = "mailto:${engObject.getEmail()}">${engObject.getEmail()}</a></li>
+            <li class="list-group-item">GitHub: <a href = "https://github.com/${engObject.getGitHub()}">${engObject.getGitHub()}</li>
+        </ul>
+    </div>
+    `;
+    })
+    .join('')}`;
+};
 
-// const genInternCards = function (intObject) {
-//     // code to create int cards here
-// }
+const genInternCards = function (intArr) {
+    const intObjects = intArr.map(data => new Intern(data));
+    return `${intObjects.map(intObject => {
+        return `
+    <div class="card" style="width: 18rem;">
+        <div class="card-header border border-dark">
+            <h3 class = "name">${intObject.getName()}</h3>
+            <h4 class = "role"><span class="oi oi-bug"></span> ${intObject.getRole()}</h4>
+        </div>
+        <ul class="list-group list-group-flush border border-dark">
+            <li class="list-group-item">ID: ${intObject.getId()}</li>
+            <li class="list-group-item">Email: <a href = "mailto:${intObject.getEmail()}">${intObject.getEmail()}</a></li>
+            <li class="list-group-item">School: ${intObject.getSchool()}</li>
+        </ul>
+    </div>
+    `;
+    })
+    .join('')}`;
+};
 
 const pageHTML = function (objects) {
     // destructure objects data by role
-    const manObject = objects;
+    const {engineers, interns, ...manager} = objects;
+    
 
     return `
     <!DOCTYPE html>
@@ -48,7 +85,9 @@ const pageHTML = function (objects) {
 
         <main>
             <div class="d-flex flex-row bd-highlight mb-3 justify-content-center">
-            ${genManagerCard(manObject)}
+            ${genManagerCard(new Manager(manager))}
+            ${genEngineerCards(engineers)}
+            ${genInternCards(interns)}
             </div>
         </main>
 
