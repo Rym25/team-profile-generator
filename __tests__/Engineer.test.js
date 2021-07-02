@@ -21,3 +21,7 @@ test('confirms the inherited methods function', () => {
 test('confirms Engineer method returns the GitHub username', () => {
     expect(eng.getGitHub()).toBe('Rym25');
 })
+
+test('confirms that getRole() called from Engineer returns Engineer', () => {
+    expect(eng.getRole()).toBe('Engineer');
+})
