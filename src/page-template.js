@@ -6,7 +6,7 @@ const genManagerCard = function (manObject) {
             <h4 class = "role"><span class="oi oi-bullhorn"></span> ${manObject.getRole()}</h4>
         </div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">${manObject.getID()}</li>
+            <li class="list-group-item">${manObject.getId()}</li>
             <li class="list-group-item">${manObject.getEmail()}</li>
             <li class="list-group-item">${manObject.ofNum}</li>
         </ul>
@@ -59,4 +59,4 @@ const pageHTML = function (objects) {
     `
 }
 
-module.exports = pageHTML();
+module.exports = pageHTML;
