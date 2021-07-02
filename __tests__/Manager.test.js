@@ -11,3 +11,13 @@ test('creates a man object with all of the required parameters', () => {
     expect(man.email).toBe('sample@gmail.com');
     expect(man.ofNum).toBe('B-102');
 })
+
+test('confirms the inherited methods function', () => {
+    expect(man.getName()).toBe('Rye');
+    expect(man.getId()).toEqual(1);
+    expect(man.getEmail()).toBe('sample@gmail.com');
+})
+
+test('confirms the new method overwrites the old method and prints "Manager" instead of "Employee".', () => {
+    expect(man.getRole()).toBe('Manager');
+})
