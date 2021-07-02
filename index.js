@@ -234,4 +234,5 @@ promptManager()
 .then(obj => {
     return pageHTML(obj);
 })
-.then(html => writeFile(html));
+.then(html => writeFile(html))
+.catch(err => {console.log(err)});
